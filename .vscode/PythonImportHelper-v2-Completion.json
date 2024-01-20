@@ -1,0 +1,221 @@
+[
+    {
+        "label": "ChatPromptTemplate",
+        "importPath": "langchain.prompts.chat",
+        "description": "langchain.prompts.chat",
+        "isExtraImport": true,
+        "detail": "langchain.prompts.chat",
+        "documentation": {}
+    },
+    {
+        "label": "SystemMessagePromptTemplate",
+        "importPath": "langchain.prompts.chat",
+        "description": "langchain.prompts.chat",
+        "isExtraImport": true,
+        "detail": "langchain.prompts.chat",
+        "documentation": {}
+    },
+    {
+        "label": "HumanMessagePromptTemplate",
+        "importPath": "langchain.prompts.chat",
+        "description": "langchain.prompts.chat",
+        "isExtraImport": true,
+        "detail": "langchain.prompts.chat",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "PyPDF2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "PyPDF2",
+        "description": "PyPDF2",
+        "detail": "PyPDF2",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "StringIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "FAISS",
+        "importPath": "langchain.vectorstores",
+        "description": "langchain.vectorstores",
+        "isExtraImport": true,
+        "detail": "langchain.vectorstores",
+        "documentation": {}
+    },
+    {
+        "label": "RetrievalQA",
+        "importPath": "langchain.chains",
+        "description": "langchain.chains",
+        "isExtraImport": true,
+        "detail": "langchain.chains",
+        "documentation": {}
+    },
+    {
+        "label": "QAGenerationChain",
+        "importPath": "langchain.chains",
+        "description": "langchain.chains",
+        "isExtraImport": true,
+        "detail": "langchain.chains",
+        "documentation": {}
+    },
+    {
+        "label": "LLMChain",
+        "importPath": "langchain.chains",
+        "description": "langchain.chains",
+        "isExtraImport": true,
+        "detail": "langchain.chains",
+        "documentation": {}
+    },
+    {
+        "label": "ChatOpenAI",
+        "importPath": "langchain.chat_models",
+        "description": "langchain.chat_models",
+        "isExtraImport": true,
+        "detail": "langchain.chat_models",
+        "documentation": {}
+    },
+    {
+        "label": "SVMRetriever",
+        "importPath": "langchain.retrievers",
+        "description": "langchain.retrievers",
+        "isExtraImport": true,
+        "detail": "langchain.retrievers",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAIEmbeddings",
+        "importPath": "langchain.embeddings.openai",
+        "description": "langchain.embeddings.openai",
+        "isExtraImport": true,
+        "detail": "langchain.embeddings.openai",
+        "documentation": {}
+    },
+    {
+        "label": "RecursiveCharacterTextSplitter",
+        "importPath": "langchain.text_splitter",
+        "description": "langchain.text_splitter",
+        "isExtraImport": true,
+        "detail": "langchain.text_splitter",
+        "documentation": {}
+    },
+    {
+        "label": "StreamingStdOutCallbackHandler",
+        "importPath": "langchain.callbacks.streaming_stdout",
+        "description": "langchain.callbacks.streaming_stdout",
+        "isExtraImport": true,
+        "detail": "langchain.callbacks.streaming_stdout",
+        "documentation": {}
+    },
+    {
+        "label": "CallbackManager",
+        "importPath": "langchain.callbacks.base",
+        "description": "langchain.callbacks.base",
+        "isExtraImport": true,
+        "detail": "langchain.callbacks.base",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain.embeddings",
+        "description": "langchain.embeddings",
+        "isExtraImport": true,
+        "detail": "langchain.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "openai",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "openai",
+        "description": "openai",
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "load_docs",
+        "kind": 2,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "peekOfCode": "def load_docs(files):\n    # st.info(\"`Reading doc ...`\")\n    all_text = \"\"\n    for file_path in files:\n        file_extension = os.path.splitext(file_path.name)[1]\n        if file_extension == \".pdf\":\n            pdf_reader = PyPDF2.PdfReader(file_path)\n            text = \"\"\n            for page in pdf_reader.pages:\n                text += page.extract_text()",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "create_retriever",
+        "kind": 2,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "peekOfCode": "def create_retriever(_embeddings, splits, retriever_type):\n    if retriever_type == \"SIMILARITY SEARCH\":\n        try:\n            vectorstore = FAISS.from_texts(splits, _embeddings)\n        except (IndexError, ValueError) as e:\n            st.error(f\"Error creating vectorstore: {e}\")\n            return\n        retriever = vectorstore.as_retriever(k=5)\n    return retriever\n@st.cache_resource",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "split_texts",
+        "kind": 2,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "peekOfCode": "def split_texts(text, chunk_size, overlap, split_method):\n    # Split texts\n    # IN: text, chunk size, overlap, split_method\n    # OUT: list of str splits\n    # st.info(\"`Splitting doc ...`\")\n    split_method = \"RecursiveTextSplitter\"\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size, chunk_overlap=overlap)\n    splits = text_splitter.split_text(text)\n    if not splits:",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "retriever_type",
+        "kind": 5,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "peekOfCode": "retriever_type = \"SIMILARITY SEARCH\"\napi_key = os.environ.get('OPENAI_API_KEY')\nembedding_option = \"Open AI Embedding\"\nst.set_page_config(\n    page_title=\"StudyMonkey\",\n    page_icon=\"📚\",\n    layout=\"centered\",\n    initial_sidebar_state=\"collapsed\"\n)\nst.title(\":red[StudyMonkey] — Learn Better. 📚\", anchor=False)",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "api_key",
+        "kind": 5,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "peekOfCode": "api_key = os.environ.get('OPENAI_API_KEY')\nembedding_option = \"Open AI Embedding\"\nst.set_page_config(\n    page_title=\"StudyMonkey\",\n    page_icon=\"📚\",\n    layout=\"centered\",\n    initial_sidebar_state=\"collapsed\"\n)\nst.title(\":red[StudyMonkey] — Learn Better. 📚\", anchor=False)\nst.write(\"\"\"",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "embedding_option",
+        "kind": 5,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "peekOfCode": "embedding_option = \"Open AI Embedding\"\nst.set_page_config(\n    page_title=\"StudyMonkey\",\n    page_icon=\"📚\",\n    layout=\"centered\",\n    initial_sidebar_state=\"collapsed\"\n)\nst.title(\":red[StudyMonkey] — Learn Better. 📚\", anchor=False)\nst.write(\"\"\"\nWith StudyMonkey, you can effortlessly convert PDFs into interactive chat sessions.",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "uploaded_files",
+        "kind": 5,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "peekOfCode": "uploaded_files = st.file_uploader(\"Upload a PDF or TXT Document\", type=[\n                                      \"pdf\", \"txt\"], accept_multiple_files=True)\n@st.cache_resource\ndef create_retriever(_embeddings, splits, retriever_type):\n    if retriever_type == \"SIMILARITY SEARCH\":\n        try:\n            vectorstore = FAISS.from_texts(splits, _embeddings)\n        except (IndexError, ValueError) as e:\n            st.error(f\"Error creating vectorstore: {e}\")\n            return",
+        "detail": "streamlit",
+        "documentation": {}
+    }
+]
