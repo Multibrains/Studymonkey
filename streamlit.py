@@ -132,47 +132,4 @@ if uploaded_files:
                 answer = qa.run(st.session_state.user_question)
                 st.write("**Answer:**", answer)
 
-    def create_anki_cards(text, openai_api_key):
-
-        divided_sections = split_texts(text, chunk_size=1000,
-                             overlap=0, split_method=splitter_type)
-        
-        generated_flashcards = ' '
-        for i, text in enumerate(divided_sections):
-    
-            ## You might need to change the Prompt to get consistent format.
-            messages = [
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": f"Generate question and answer sets for flashcards based on the content provided. Follow the following format: question, followed by a semicolon, then answer. Go to the next line for the next question and answer set. Repeat 20 times. Do not skip any lines. There should be 20 lines total in your response. Do not explicitly say 'Question' or 'Answer'. There is no need to put numbers indicating the question number at the beginning of each line.{text}"}
-                ]
-
-            response = openai.ChatCompletion.create(
-                    model="gpt-3.5-turbo",
-                    messages=messages, 
-                    temperature =0.3,
-                    max_tokens=2048
-                )
-
-            response_from_api = response['choices'][0]['message']['content']#.strip()
-            generated_flashcards += response_from_api
-
-            if i==0:
-                break
-            
-        return generated_flashcards
-
-
-
-st.header("Automatically make flashcards for Anki📝")
-with st.expander("💡 Video Tutorial"):
-    with st.spinner("Loading video.."):
-        st.video("https://youtu.be/IPvqb6z5oDk", format="video/mp4", start_time=0)
-
-if st.button("Get Flashcards"):
-    with st.spinner("Making your flashcards...🤓"):
-        st.session_state.flashcards = create_anki_cards(loaded_text, api_key)
-        st.download_button('Download Flashcards', st.session_state.flashcards)
-    # if submitted:
-    #     quiz_data_str = get_quiz_data(splits[0], api_key)
-    #     st.write(quiz_data_str)
-    #     st.write(splits[0])
+   
