@@ -22,7 +22,7 @@ embedding_option = "Open AI Embedding"
 
 
 st.set_page_config(
-    page_title="LankaLAW",
+    page_title="StudyMonkey",
     page_icon="📚",
     layout="centered",
     initial_sidebar_state="collapsed"
