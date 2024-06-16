@@ -31,9 +31,9 @@ st.set_page_config(
 
 
 
-st.title(":red[StudyMonkey] — Learn Better. 📚", anchor=False)
+st.title(":red[LankaLAW] — ChatPDF. 📚", anchor=False)
 st.write("""
-With StudyMonkey, you can effortlessly convert PDFs into interactive chat sessions.
+With LankaLAW, you can effortlessly convert PDFs into interactive chat sessions.
 Simply upload your PDF documents, and the app will transform the content into a chat format, making studying more engaging and dynamic.
 
 **How does it work?**
