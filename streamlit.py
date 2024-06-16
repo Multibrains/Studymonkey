@@ -159,20 +159,8 @@ if uploaded_files:
             if i==0:
                 break
             
-        return generated_flashcards
+       
 
 
 
-st.header("Automatically make flashcards for Anki📝")
-with st.expander("💡 Video Tutorial"):
-    with st.spinner("Loading video.."):
-        st.video("https://youtu.be/IPvqb6z5oDk", format="video/mp4", start_time=0)
-
-if st.button("Get Flashcards"):
-    with st.spinner("Making your flashcards...🤓"):
-        st.session_state.flashcards = create_anki_cards(loaded_text, api_key)
-        st.download_button('Download Flashcards', st.session_state.flashcards)
-    # if submitted:
-    #     quiz_data_str = get_quiz_data(splits[0], api_key)
-    #     st.write(quiz_data_str)
-    #     st.write(splits[0])
+\
